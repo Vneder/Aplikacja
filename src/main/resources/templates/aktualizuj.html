@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Aktualizacja filmu z bazy</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+    <h2>
+        <a href="http://localhost:8080/pokaz">
+            Baza Filmów
+        </a>
+        <a href="http://localhost:8080/adminH2">
+            Konsola
+        </a>
+    </h2>
+
+    <div class="formularz">
+        <h1>Edytuj film: </h1>
+        <form th:action="@{/aktualizuj}" th:object="${film}">
+            <table>
+                <tr>
+                    <td>Podaj nazwę: </td>
+                    <td>
+                        <input name="nazwa" th:field="*{nazwa}">
+                    </td>
+                </tr>
+                <tr>
+                <tr>
+                    <td>Podaj rok premiery: </td>
+                    <td><input name="data" th:field="*{data}"></td>
+                </tr>
+                <tr>
+                    <td>Wybierz gatunek:</td>
+                    <td>
+                        <select id="gatunek" name="gatunek" th:field="*{gatunek}" class="select">
+                            <option value="Komedia">Komedia</option>
+                            <option value="Dramat">Dramat</option>
+                            <option value="Gangsterski">Gangsterski</option>
+                            <option value="Akcja">Akcja</option>
+                            <option value="Kryminał">Kryminał</option>
+                            <option value="Animacja">Animacja</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td> Podaj długość: </td>
+                    <td><input name="dlugosc" th:field="*{dlugosc}"></td>
+                </tr>
+                <tr>
+                    <td> Podaj ocenę: </td>
+                    <td><input name="ocena" th:field="*{ocena}"></td>
+                </tr>
+                <tr>
+                    <td>Wybierz kategorię:</td>
+                    <td>
+                        <select name="kategoria" th:field="*{kategoria}" class="select">
+                            <option value="Dla wszystkich">Dla wszystkich</option>
+                            <option value="7+">7+</option>
+                            <option value="12+">12+</option>
+                            <option value="16+">16+</option>
+                            <option value="18+">18+</option>
+                        </select>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="hidden" name="id" th:field="*{id}">
+                    </td>
+                    <td colspan="2">
+                        <input type="submit" value="Edytuj" class="edytujBtn">
+                    </td>
+            </table>
+        </form>
+    </div>
+
+</body>
+
+</html>
